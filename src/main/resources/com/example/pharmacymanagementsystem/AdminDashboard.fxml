@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Admin_Form" prefHeight="442.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacymanagementsystem.AdminDashboard">
+   <children>
+      <AnchorPane prefHeight="442.0" prefWidth="200.0">
+         <children>
+            <AnchorPane prefHeight="442.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@css/dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="83.0" fitWidth="93.0" layoutX="56.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/doctor.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="70.0" layoutY="98.0" text="Welcome" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="UserName_Lable" alignment="CENTER" layoutX="13.0" layoutY="119.0" prefHeight="37.0" prefWidth="171.0" text="Ammar" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="24.0" />
+                     </font>
+                  </Label>
+                  <Line endX="112.0" layoutX="69.0" layoutY="156.0" startX="-49.5" stroke="WHITE" />
+                  <Button fx:id="Dashboard_btn" layoutX="20.0" layoutY="171.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="21.0" prefWidth="163.0" styleClass="nav-btn" stylesheets="@css/dashboardDesign.css" text="Dashboard" />
+
+                  <Button fx:id="AddUser_Btn" layoutX="19.0" layoutY="221.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="21.0" prefWidth="163.0" styleClass="nav-btn" stylesheets="@css/dashboardDesign.css" text="Add User" textAlignment="RIGHT" />
+
+                  <Button fx:id="ViewUser_Btn" layoutX="20.0" layoutY="273.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="21.0" prefWidth="163.0" styleClass="nav-btn" stylesheets="@css/dashboardDesign.css" text="View User" textAlignment="RIGHT" />
+
+                  <Button fx:id="Logout_Btn" layoutX="70.0" layoutY="396.0" mnemonicParsing="false" onAction="#logout" styleClass="logout-btn" stylesheets="@css/dashboardDesign.css" text="Logout" textFill="WHITE">
+
+                  </Button>
+
+                  <Button fx:id="Profle_Btn" layoutX="19.0" layoutY="327.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="21.0" prefWidth="163.0" styleClass="nav-btn" stylesheets="@css/dashboardDesign.css" text="Profile" textAlignment="RIGHT" />
+
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Dashboard_Form" layoutX="199.0" layoutY="14.0" prefHeight="442.0" prefWidth="709.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="Dashboard_Chart_Pane" layoutX="14.0" layoutY="14.0" prefHeight="193.0" prefWidth="679.0" stylesheets="@css/dashboardDesign.css">
+               <children>
+                  <AreaChart fx:id="Dashboard_Chart" layoutX="11.0" layoutY="11.0" prefHeight="250.0" prefWidth="668.0" title="Medicine Expiry Data Chart">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </AreaChart>
+               </children>
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </AnchorPane>
+            <AnchorPane layoutX="13.0" layoutY="286.0" prefHeight="141.0" prefWidth="681.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <AnchorPane fx:id="MedicineCount_Pane" layoutX="14.0" layoutY="12.0" prefHeight="117.0" prefWidth="200.0" stylesheets="@css/dashboardDesign.css">
+                     <styleClass>
+                        <String fx:value="nav-form" />
+                        <String fx:value="card" />
+                     </styleClass>
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="39.0" layoutX="14.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/check.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="Total_Medicine_Count" alignment="CENTER_RIGHT" layoutX="72.0" layoutY="14.0" prefHeight="31.0" prefWidth="114.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="34.0" layoutY="71.0" prefHeight="31.0" prefWidth="142.0" text="Available Medicine" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri" size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="TotalIncome_Pane" layoutX="241.0" layoutY="12.0" prefHeight="117.0" prefWidth="200.0" stylesheets="@css/dashboardDesign.css">
+                     <styleClass>
+                        <String fx:value="nav-form" />
+                        <String fx:value="card" />
+                     </styleClass>
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="39.0" layoutX="14.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/money.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="Total_Income_Count" alignment="CENTER_RIGHT" layoutX="72.0" layoutY="14.0" prefHeight="31.0" prefWidth="114.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="34.0" layoutY="71.0" prefHeight="31.0" prefWidth="142.0" text="Total Income" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri" size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="TotalCustomer_Pane" layoutX="467.0" layoutY="12.0" prefHeight="117.0" prefWidth="200.0" stylesheets="@css/dashboardDesign.css">
+                     <styleClass>
+                        <String fx:value="nav-form" />
+                        <String fx:value="card" />
+                     </styleClass>
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="39.0" layoutX="14.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/group.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="Total_User_Count" alignment="CENTER_RIGHT" layoutX="83.0" layoutY="14.0" prefHeight="31.0" prefWidth="103.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="34.0" layoutY="71.0" prefHeight="31.0" prefWidth="142.0" text="Total Users" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri" size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Profile_Form" layoutX="200.0" layoutY="72.0" prefHeight="442.0" prefWidth="883.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="11.0" layoutY="21.0" prefHeight="402.0" prefWidth="668.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <Label fx:id="profile_LastName_Lable" alignment="CENTER" layoutX="92.0" layoutY="324.0" text="Last Name">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="-100.0" endY="252.33334350585938" layoutX="345.0" layoutY="96.0" startX="-100.0" startY="-43.0" stroke="#2f845e" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="49.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/profile.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="profile_FirstName_Lable" alignment="CENTER" layoutX="92.0" layoutY="293.0" text="First Name">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font></Label>
+                  <Label layoutX="290.0" layoutY="68.0" text="Email">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="profile_Email_tf" disable="true" layoutX="290.0" layoutY="90.0" prefHeight="25.0" prefWidth="285.0" />
+                  <Label layoutX="290.0" layoutY="122.0" text="Address">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="profile_Address_tf" disable="true" layoutX="290.0" layoutY="144.0" prefHeight="25.0" prefWidth="285.0" />
+                  <Label layoutX="290.0" layoutY="182.0" text="Mobile">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="profile_Mobile_tf" disable="true" layoutX="290.0" layoutY="204.0" prefHeight="25.0" prefWidth="285.0" />
+                  <Label layoutX="290.0" layoutY="246.0" text="Password">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="profile_Password_tf" disable="true" layoutX="290.0" layoutY="268.0" prefHeight="25.0" prefWidth="285.0" />
+                  <Label layoutX="290.0" layoutY="310.0" text="Role">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="profile_Role_tf" disable="true" layoutX="290.0" layoutY="332.0" prefHeight="25.0" prefWidth="285.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Add_User_Form" layoutX="199.0" layoutY="57.0" prefHeight="442.0" prefWidth="892.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="199.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane id="AddUser_Form" layoutX="14.0" layoutY="20.0" prefHeight="402.0" prefWidth="679.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <TextField fx:id="tf_FirstName" layoutX="157.0" layoutY="135.0" prefHeight="25.0" prefWidth="179.0" promptText="Enter First Name" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="33.0" layoutY="137.0" text="First Name">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_LastName" layoutX="485.0" layoutY="135.0" prefHeight="25.0" prefWidth="179.0" promptText="Enter Last Name" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="379.0" layoutY="137.0" text="Last Name">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_Email" layoutX="157.0" layoutY="188.0" prefHeight="25.0" prefWidth="179.0" promptText="Enter Email" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="33.0" layoutY="190.0" text="Email">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_MobileNumber" layoutX="485.0" layoutY="188.0" prefHeight="25.0" prefWidth="179.0" promptText="Enter Mobile Number" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="379.0" layoutY="190.0" text="Mobile">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_Address" layoutX="157.0" layoutY="243.0" prefHeight="25.0" prefWidth="179.0" promptText="Enter Your Address" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="33.0" layoutY="245.0" text="Address">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="379.0" layoutY="245.0" text="Password">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="33.0" layoutY="302.0" text="Role">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="combo_Role" layoutX="157.0" layoutY="301.0" prefHeight="25.0" prefWidth="179.0" promptText="Choose Role" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <ImageView fitHeight="90.0" fitWidth="109.0" layoutX="298.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/add-friend.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="291.0" layoutY="352.0" mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="90.0" styleClass="logout-btn" stylesheets="@css/dashboardDesign.css" text="Save" textFill="WHITE" />
+                  <PasswordField fx:id="tf_Password" layoutX="485.0" layoutY="243.0" prefHeight="25.0" prefWidth="179.0" promptText="Enter Password" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="View_User_Form" layoutX="200.0" layoutY="21.0" prefHeight="442.0" prefWidth="797.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="150.0" prefWidth="681.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <Label layoutX="11.0" layoutY="18.0" text="First Name:" />
+                  <TextField fx:id="update_User_First" layoutX="79.0" layoutY="14.0" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="236.0" layoutY="18.0" text="Last Name:" />
+                  <TextField fx:id="update_User_Last" layoutX="304.0" layoutY="14.0" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="460.0" layoutY="18.0" text="Phone:" />
+                  <TextField fx:id="update_User_Phone" layoutX="528.0" layoutY="14.0" prefHeight="25.0" prefWidth="142.0" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="11.0" layoutY="61.0" text="Email:" />
+                  <TextField fx:id="update_User_Email" layoutX="79.0" layoutY="57.0" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="239.0" layoutY="61.0" text="Password:" />
+                  <TextField fx:id="update_User_Password" layoutX="304.0" layoutY="57.0" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <ComboBox fx:id="update_User_Role" layoutX="528.0" layoutY="57.0" prefHeight="25.0" prefWidth="142.0" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="463.0" layoutY="60.0" text="Role:" />
+                  <Label layoutX="14.0" layoutY="103.0" text="Address:" />
+                  <TextField fx:id="update_User_Address" layoutX="82.0" layoutY="99.0" styleClass="textfield" />
+                  <Button fx:id="Update_User_Btn" layoutX="353.0" layoutY="107.0" mnemonicParsing="false" onAction="#updateUser" styleClass="logout-btn" stylesheets="@css/dashboardDesign.css" text="Update" textFill="WHITE" />
+                  <TextField fx:id="update_User_Id" layoutX="454.0" layoutY="100.0" visible="false" />
+                  <Button layoutX="437.0" layoutY="108.0" mnemonicParsing="false" onAction="#deleteUser" style="-fx-background-color: Red;" styleClass="logout-btn" stylesheets="@css/dashboardDesign.css" text="Delete" textFill="#ebebeb" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="14.0" layoutY="176.0" prefHeight="250.0" prefWidth="681.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <ImageView fitHeight="22.0" fitWidth="26.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/search.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="User_Search_tf" layoutX="43.0" layoutY="15.0" onAction="#userSearch" prefWidth="150.0" promptText="Search" styleClass="search" />
+                  <TableView fx:id="User_Table_View" layoutX="9.0" layoutY="43.0" onMouseClicked="#updateUserSelect" prefHeight="193.0" prefWidth="661.0" stylesheets="@css/dashboardDesign.css">
+                    <columns>
+                      <TableColumn fx:id="userList_Col_Id" prefWidth="33.33332824707031" text="Id" />
+                      <TableColumn fx:id="userList_Col_First" text="First Name" />
+                        <TableColumn fx:id="userList_Col_Last" prefWidth="72.66665649414062" text="Last Name" />
+                        <TableColumn fx:id="userList_Col_Phone" prefWidth="54.000030517578125" text="Phone" />
+                        <TableColumn fx:id="userList_Col_Email" prefWidth="132.00003051757812" text="Email" />
+                        <TableColumn fx:id="userList_Col_Password" prefWidth="82.66668701171875" text="Password" />
+                        <TableColumn fx:id="userList_Col_Role" prefWidth="75.0" text="Role" />
+                        <TableColumn fx:id="userList_Col_Address" prefWidth="124.66664632161462" text="Address" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacymanagementsystem.PharmacistDashboard">
+   <children>
+      <AnchorPane layoutX="-1.0" prefHeight="452.0" prefWidth="211.0" styleClass="nav-form" stylesheets="@css/dashboardDesign.css">
+         <children>
+            <ImageView fitHeight="83.0" fitWidth="93.0" layoutX="56.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/doctor.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="70.0" layoutY="98.0" text="Welcome" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="UserName_Lable" alignment="CENTER" layoutX="13.0" layoutY="119.0" prefHeight="37.0" prefWidth="171.0" text="Ammar" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="112.0" layoutX="69.0" layoutY="156.0" startX="-49.5" stroke="WHITE" />
+            <Button fx:id="add_medicine_btn" layoutX="20.0" layoutY="171.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="21.0" prefWidth="163.0" styleClass="nav-btn" stylesheets="@css/dashboardDesign.css" text="Add Medicine" />
+            <Button fx:id="sell_medicine_Btn" layoutX="19.0" layoutY="214.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="21.0" prefWidth="163.0" styleClass="nav-btn" stylesheets="@css/dashboardDesign.css" text="Sell Medicine" textAlignment="RIGHT" />
+            <Button fx:id="view_medicine_Btn" layoutX="20.0" layoutY="258.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="21.0" prefWidth="163.0" styleClass="nav-btn" stylesheets="@css/dashboardDesign.css" text="View Medicine" textAlignment="RIGHT" />
+            <Button fx:id="Logout_Btn" layoutX="70.0" layoutY="396.0" mnemonicParsing="false" onAction="#logout" styleClass="logout-btn" stylesheets="@css/dashboardDesign.css" text="Logout" textFill="WHITE" />
+            <Button fx:id="Profle_Btn" layoutX="19.0" layoutY="334.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="21.0" prefWidth="163.0" styleClass="nav-btn" stylesheets="@css/dashboardDesign.css" text="Profile" textAlignment="RIGHT" />
+            <Button fx:id="view_bill_btn" layoutX="22.0" layoutY="296.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="21.0" prefWidth="163.0" styleClass="nav-btn" stylesheets="@css/dashboardDesign.css" text="View Bill" textAlignment="RIGHT" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="add_medicine_form" layoutX="210.0" prefHeight="452.0" prefWidth="552.0" visible="false">
+         <children>
+            <AnchorPane layoutX="10.0" layoutY="11.0" prefHeight="429.0" prefWidth="531.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <Label layoutX="128.0" layoutY="160.0" text="Name:" />
+                  <ImageView fitHeight="116.0" fitWidth="110.0" layoutX="211.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/medicine.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="add_Medicine_Name_tf" layoutX="193.0" layoutY="156.0" prefHeight="25.0" prefWidth="211.0" promptText="Enter Medicine Name" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="127.0" layoutY="206.0" text="Quantity" />
+                  <TextField fx:id="add_Medicine_Quantity_tf" layoutX="192.0" layoutY="202.0" prefHeight="25.0" prefWidth="211.0" promptText="Enter Quantity " styleClass="textfield" />
+                  <Label layoutX="128.0" layoutY="253.0" text="Price" />
+                  <TextField fx:id="add_Medicine_Price_tf" layoutX="193.0" layoutY="249.0" prefHeight="25.0" prefWidth="211.0" promptText="Enter Price" styleClass="textfield" />
+                  <DatePicker fx:id="add_Medicine_Expiry_tf" layoutX="192.0" layoutY="304.0" prefHeight="25.0" prefWidth="211.0" promptText="Choose Expiry Date" styleClass="textfield" />
+                  <Label layoutX="128.0" layoutY="308.0" text="Expiry" />
+                  <Button layoutX="230.0" layoutY="368.0" mnemonicParsing="false" onAction="#addMedicine" prefHeight="25.0" prefWidth="71.0" styleClass="logout-btn" text="Add" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="view_medicine_form" layoutX="210.0" layoutY="-3.0" prefHeight="452.0" prefWidth="552.0" visible="false">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="167.0" prefWidth="531.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <Label layoutX="22.0" layoutY="24.0" prefHeight="17.0" prefWidth="46.0" text="Name:" />
+                  <TextField fx:id="update_medicine_name_tf" layoutX="68.0" layoutY="20.0" prefHeight="25.0" prefWidth="220.0" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="22.0" layoutY="79.0" prefHeight="17.0" prefWidth="46.0" text="Expiry" />
+                  <TextField fx:id="update_medicine_qty_tf" layoutX="387.0" layoutY="20.0" prefHeight="25.0" prefWidth="129.0" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <Label layoutX="324.0" layoutY="24.0" prefHeight="17.0" prefWidth="52.0" text="Quantity:" />
+                  <Label layoutX="330.0" layoutY="79.0" prefHeight="17.0" prefWidth="46.0" text="Price:" />
+                  <TextField fx:id="update_medicine_price_tf" layoutX="388.0" layoutY="75.0" prefHeight="25.0" prefWidth="129.0" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+                  <TextField fx:id="update_medicine_id_tf" layoutX="22.0" layoutY="120.0" prefHeight="25.0" prefWidth="220.0" visible="false" />
+                  <Button fx:id="update_medicine_update_btn" layoutX="376.0" layoutY="120.0" mnemonicParsing="false" onAction="#updateMedicine" styleClass="logout-btn" stylesheets="@css/dashboardDesign.css" text="Update" textFill="WHITE" />
+                  <Button fx:id="update_medicine_delete_btn" layoutX="452.0" layoutY="120.0" mnemonicParsing="false" onAction="#deleteMedicine" style="-fx-background-color: red;" styleClass="logout-btn" stylesheets="@css/dashboardDesign.css" text="Delete" textFill="WHITE" />
+                  <DatePicker fx:id="update_medicine_expiry_tf" layoutX="68.0" layoutY="75.0" prefHeight="25.0" prefWidth="220.0" styleClass="textfield" stylesheets="@css/dashboardDesign.css" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="12.0" layoutY="200.0" prefHeight="245.0" prefWidth="531.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <TextField fx:id="update_medicine_search_tf" layoutX="46.0" layoutY="14.0" onAction="#medicineSearch" prefHeight="25.0" prefWidth="220.0" promptText="Search" styleClass="search" stylesheets="@css/dashboardDesign.css" />
+                  <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/search.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="medicine_table_view" layoutX="5.0" layoutY="47.0" onMouseClicked="#addMedicineSelect" prefHeight="192.0" prefWidth="519.0">
+                    <columns>
+                      <TableColumn fx:id="medicine_table_col_header_Id" prefWidth="51.33329772949219" text="Id" />
+                      <TableColumn fx:id="medicine_table_col_header_name" prefWidth="130.66665649414062" text="Name" />
+                        <TableColumn fx:id="medicine_table_col_header_qty" prefWidth="122.00003051757812" text="Quantity" />
+                        <TableColumn fx:id="medicine_table_col_header_price" prefWidth="74.66668701171875" text="Price" />
+                        <TableColumn fx:id="medicine_table_col_header_expiry" prefWidth="140.0" text="Expiry" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Profile_Form" layoutX="210.0" layoutY="-2.0" prefHeight="452.0" prefWidth="552.0" visible="false">
+         <children>
+            <AnchorPane layoutX="20.0" layoutY="26.0" prefHeight="411.0" prefWidth="513.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </AnchorPane>
+            <Label fx:id="profile_LastName_Lable" alignment="CENTER" layoutX="102.0" layoutY="334.0" text="Last Name">
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Label>
+            <Line endX="-100.00003051757812" endY="280.3333435058594" layoutX="355.0" layoutY="106.0" startX="-100.0" startY="-43.0" stroke="#2f845e" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="59.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/profile.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="profile_FirstName_Lable" alignment="CENTER" layoutX="102.0" layoutY="303.0" text="First Name">
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="300.0" layoutY="78.0" text="Email">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="profile_Email_tf" disable="true" layoutX="300.0" layoutY="100.0" prefHeight="25.0" prefWidth="203.0" />
+            <Label layoutX="300.0" layoutY="132.0" text="Address">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="profile_Address_tf" disable="true" layoutX="300.0" layoutY="154.0" prefHeight="25.0" prefWidth="203.0" />
+            <Label layoutX="300.0" layoutY="192.0" text="Mobile">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="profile_Mobile_tf" disable="true" layoutX="300.0" layoutY="214.0" prefHeight="25.0" prefWidth="203.0" />
+            <Label layoutX="300.0" layoutY="256.0" text="Password">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="profile_Password_tf" disable="true" layoutX="300.0" layoutY="278.0" prefHeight="25.0" prefWidth="203.0" />
+            <Label layoutX="300.0" layoutY="320.0" text="Role">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="profile_Role_tf" disable="true" layoutX="300.0" layoutY="342.0" prefHeight="25.0" prefWidth="203.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="View_Bill_Form" layoutX="210.0" prefHeight="452.0" prefWidth="552.0">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="429.0" prefWidth="531.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <ImageView fitHeight="37.0" fitWidth="46.0" layoutX="24.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/search.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="bill_table_view" layoutY="82.0" onMouseClicked="#addMedicineSelectForSellTable" prefHeight="347.0" prefWidth="531.0" stylesheets="@css/dashboardDesign.css">
+                     <columns>
+                        <TableColumn fx:id="bill_col_Id" prefWidth="33.33332824707031" text="Id" />
+                        <TableColumn fx:id="bill_col_TotalPaid" prefWidth="160.00003051757812" text="Total Paid" />
+                        <TableColumn fx:id="bill_col_Date" prefWidth="94.0" text="Date" />
+                        <TableColumn fx:id="bill_col_GeneratedBy" prefWidth="237.33331298828125" text="Generated By" />
+                     </columns>
+                  </TableView>
+                  <TextField fx:id="bill_search_tf" layoutX="66.0" layoutY="20.0" onAction="#searchBillDataList" prefHeight="37.0" prefWidth="220.0" promptText="Search" styleClass="search">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="Sell_Medicine_Form" layoutX="210.0" prefHeight="452.0" prefWidth="552.0" visible="false">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="150.0" prefWidth="531.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <ImageView fitHeight="22.0" fitWidth="26.0" layoutX="9.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/search.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="sell_med_Search_tf" layoutX="38.0" layoutY="4.0" onAction="#medicineSearchForSellTable" prefWidth="150.0" promptText="Search" styleClass="search" />
+                  <TableView fx:id="sell_med_table_View" layoutY="27.0" onMouseClicked="#addMedicineSelectForSellTable" prefHeight="121.0" prefWidth="531.0" stylesheets="@css/dashboardDesign.css">
+                     <columns>
+                        <TableColumn fx:id="sell_medList_Col_Id" prefWidth="33.33332824707031" text="Id" />
+                        <TableColumn fx:id="sell_medList_Col_Name" prefWidth="160.00003051757812" text="Medicine Name" />
+                        <TableColumn fx:id="sell_medList_Col_Quantity" prefWidth="94.0" text="Quantity" />
+                        <TableColumn fx:id="sell_medList_Col_Price" prefWidth="101.3333740234375" text="Price" />
+                        <TableColumn fx:id="sell_medList_Col_Expiry" prefWidth="138.0" text="Expiry" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="12.0" layoutY="175.0" prefHeight="268.0" prefWidth="531.0" stylesheets="@css/dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <TextField fx:id="sell_med_name_tf" editable="false" layoutX="45.0" layoutY="12.0" prefHeight="25.0" prefWidth="162.0" />
+                  <Label layoutX="5.0" layoutY="16.0" text="Name" />
+                  <TextField fx:id="sell_med_qty_tf" editable="false" layoutX="267.0" layoutY="12.0" prefHeight="25.0" prefWidth="103.0" />
+                  <Label layoutX="214.0" layoutY="16.0" text="Quantity" />
+                  <TextField fx:id="sell_med_price_tf" editable="false" layoutX="421.0" layoutY="12.0" prefHeight="25.0" prefWidth="103.0" />
+                  <Label layoutX="382.0" layoutY="16.0" text="Price" />
+                  <TextField fx:id="sell_med_noOfUnits_tf" layoutX="69.0" layoutY="44.0" onAction="#onNumberOfUnitsFieldChanges" prefHeight="25.0" prefWidth="103.0" />
+                  <Label layoutX="5.0" layoutY="48.0" text="No of Units" />
+                  <TextField fx:id="sell_med_totalPrice_tf" editable="false" layoutX="239.0" layoutY="44.0" prefHeight="25.0" prefWidth="103.0" />
+                  <Label layoutX="176.0" layoutY="48.0" text="Total Price" />
+                  <Button fx:id="add_to_cart_btn" layoutX="435.0" layoutY="42.0" mnemonicParsing="false" onAction="#addMedicineToCart" styleClass="logout-btn" stylesheets="@css/dashboardDesign.css" text="Add To Cart" textFill="WHITE" />
+                  <TableView fx:id="sell_med_table_final_View" layoutX="1.0" layoutY="73.0" prefHeight="159.0" prefWidth="531.0" stylesheets="@css/dashboardDesign.css">
+                     <columns>
+                        <TableColumn fx:id="sell_medList_Col_Id_final" prefWidth="42.66664123535156" text="Id" />
+                        <TableColumn fx:id="sell_medList_Col_Name_final" prefWidth="108.6666259765625" text="Medicine Name" />
+                        <TableColumn fx:id="sell_medList_Col_Qty_final" prefWidth="95.99993896484375" text="Quantity" />
+                        <TableColumn fx:id="sell_medList_Col_Price_final" minWidth="0.0" prefWidth="76.66665649414062" text="Price" />
+                        <TableColumn fx:id="sell_medList_Col_NoOfUnits_Final" minWidth="0.0" prefWidth="84.0" text="No of Units" />
+                        <TableColumn fx:id="sell_medList_Col_TotalPrice_Final" minWidth="0.0" prefWidth="117.3333740234375" text="Total Price" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="172.0" layoutY="235.0" text="AED: ">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="purchase_bill_btn" layoutX="419.0" layoutY="238.0" mnemonicParsing="false" onAction="#onPurchase" prefHeight="25.0" prefWidth="110.0" styleClass="logout-btn" stylesheets="@css/dashboardDesign.css" text="Purchase &amp; Bill" textFill="WHITE" />
+                  <Label fx:id="Total_Bill_Payment_lb" layoutX="232.0" layoutY="235.0" prefHeight="29.0" prefWidth="95.0" text="0">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="sell_med_Id_tf" layoutX="359.0" layoutY="42.0" prefHeight="25.0" prefWidth="46.0" visible="false" />
+                  <Button fx:id="cancel_Purchase_btn" layoutX="334.0" layoutY="238.0" mnemonicParsing="false" onAction="#onCartCancel" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: red;" styleClass="logout-btn" stylesheets="@css/dashboardDesign.css" text="Cancel" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
