@@ -1,0 +1,42 @@
+
+<-- Run this script to create the tables in the database you have created. I have setup with the database in DbConnection
+Class -->
+
+
+CREATE TABLE `bill` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `Date` date DEFAULT NULL,
+  `TotalPaid` double DEFAULT NULL,
+  `GeneratedBy` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `cart` (
+  `Id` int NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Quantity` int DEFAULT NULL,
+  `Price` double DEFAULT NULL,
+  `NoOfUnits` int DEFAULT NULL,
+  `TotalPrice` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `medicine` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) NOT NULL,
+  `Quantity` int NOT NULL,
+  `PricePerUnit` double DEFAULT NULL,
+  `Expiry` date NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `user` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `FirstName` varchar(255) NOT NULL,
+  `LastName` varchar(255) NOT NULL,
+  `Phone` varchar(20) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Role` varchar(20) NOT NULL,
+  `Address` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
